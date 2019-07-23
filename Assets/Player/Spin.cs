@@ -5,16 +5,16 @@ using UnityEngine;
 public class Spin : MonoBehaviour
 {
 
-    public float rotationModifier = 1;
+    private float rotationModifier;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rotationModifier = Random.Range(-2f, 2f);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Rotate(Vector3.forward * (-1) * rotationModifier);
+        transform.Rotate(Vector3.back  * rotationModifier);
     }
 }

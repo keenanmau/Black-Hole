@@ -5,30 +5,23 @@ using UnityEngine;
 public class Size : MonoBehaviour
 {
 
-    public float scale = 1;
-    public float mass = 100;
-    public bool Test;
+    private float scale;
+    public float pointsMass;
+    public float mass;
     
     void Start()
     {
-
+        scale = mass / 15000f;
+        transform.localScale = new Vector3(scale, scale, 1);
     }
 
-    void Update()
-    {
-        if (Test)
-        {
-            Test = !Test;
-            increaseScale(100);
-        }
-    }
+
     
     public void increaseScale(float vMass)
     {
-        mass += vMass;
-        scale = mass / 100;
+        pointsMass += vMass;
+        scale = (mass  + pointsMass) / 15000;
         transform.localScale = new Vector3(scale, scale, 1);
-
     }
 
 }

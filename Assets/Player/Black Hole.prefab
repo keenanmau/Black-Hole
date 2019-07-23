@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2111306156008821247}
   - component: {fileID: 4609669856210798310}
-  - component: {fileID: 6637238259847010525}
+  - component: {fileID: 8767556243446680164}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2921360171390374628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1333, y: 0.1333, z: 1}
   m_Children: []
   m_Father: {fileID: 4032129147343451180}
   m_RootOrder: 0
@@ -71,18 +71,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 206b6a27b8807a84f84cc054f2c3f9fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 12.8, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6637238259847010525
+--- !u!114 &8767556243446680164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,10 +91,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2921360171390374628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484c23d798d7bd349bd1e0bf3c561226, type: 3}
+  m_Script: {fileID: 11500000, guid: 307fb35749c951446b125ba4a13ff6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationModifier: 1
+  rotationModifier: 2
 --- !u!1 &4032129147343451182
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,10 +106,10 @@ GameObject:
   - component: {fileID: 4032129147343451180}
   - component: {fileID: 5949888358951933648}
   - component: {fileID: 9033628436120042022}
-  - component: {fileID: 892734794124550042}
-  m_Layer: 0
+  - component: {fileID: 5080186322467175891}
+  m_Layer: 8
   m_Name: Black Hole
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2111306156008821247}
-  - {fileID: 258216021377166089}
   - {fileID: 520404983106898096}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -143,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ee72f24f29ba049a7221e83e537461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 1
 --- !u!50 &9033628436120042022
 Rigidbody2D:
   serializedVersion: 4
@@ -164,22 +164,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &892734794124550042
-CircleCollider2D:
+--- !u!114 &5080186322467175891
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4032129147343451182}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fcc0f081315a946b69562c0fbb2ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsMass: 0
+  mass: 100
 --- !u!1 &4955982590957297297
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,9 +188,10 @@ GameObject:
   m_Component:
   - component: {fileID: 520404983106898096}
   - component: {fileID: 5812980103238595848}
+  - component: {fileID: 15331864}
   m_Layer: 8
   m_Name: Gravity Well
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,7 +208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4032129147343451180}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5812980103238595848
 CircleCollider2D:
@@ -226,64 +225,17 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!1 &8329633563619479125
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 258216021377166089}
-  - component: {fileID: 4666252772258899207}
-  - component: {fileID: 4891054082678862032}
-  m_Layer: 8
-  m_Name: Event Horizon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &258216021377166089
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329633563619479125}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4032129147343451180}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &4666252772258899207
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329633563619479125}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
---- !u!114 &4891054082678862032
+  m_Radius: 2
+--- !u!114 &15331864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329633563619479125}
+  m_GameObject: {fileID: 4955982590957297297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a69e1d0873fc8cf4c89421a87c2700ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 294b3a643aaf832499415e756f425f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravity: 6

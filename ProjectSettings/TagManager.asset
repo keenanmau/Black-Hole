@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Object
+  - Wall
+  - Enemy
+  - EnemyEventHorizon
   layers:
   - Default
   - TransparentFX
@@ -13,12 +17,12 @@ TagManager:
   - UI
   - 
   - 
-  - Player
+  - PlayerTrigger
   - Objects
   - Walls
-  - 
-  - 
-  - 
+  - BackgroundImage
+  - PlayerCollider
+  - Gas
   - 
   - 
   - 
